@@ -19,28 +19,15 @@ int main(int argc, char *argv[])
 		return 2;
 	}
 	
-	if((opt = getopt(argc, argv, "012")) != -1){
-		switch(opt){
-			case '0':
-				fp2 = fopen(argv[2], "w");
-				while((c = fgetc(fp1)) != EOF)
+	if(argv[1] == '0'){
+			fp2 = fopen(argv[2], "w");
+			while((c = fgetc(fp1)) != EOF)
 				fputc(c, fp2);
-				fclose(fp1);
-				fclose(fp2);
-				break;
-
-			case '1':
-
-				break;
-
-			case '2':
-				break;
-
-			case '?':
-				printf("Unknown Flag: %c", opt);
-				break;
-		}
+			
+			fclose(fp2);
 	}
+
+	fclose(fp1);
 
 	return 0;
 }
